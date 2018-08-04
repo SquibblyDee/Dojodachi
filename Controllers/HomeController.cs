@@ -10,6 +10,7 @@ namespace Dojodachi.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet("/dojodachi")]
         public IActionResult Index()
         {
             return View();

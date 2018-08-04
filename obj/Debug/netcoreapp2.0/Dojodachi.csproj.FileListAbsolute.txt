@@ -1,0 +1,10 @@
+C:\Users\S\Google Drive\CSharp\Dojodachi\bin\Debug\netcoreapp2.0\Dojodachi.deps.json
+C:\Users\S\Google Drive\CSharp\Dojodachi\bin\Debug\netcoreapp2.0\Dojodachi.runtimeconfig.json
+C:\Users\S\Google Drive\CSharp\Dojodachi\bin\Debug\netcoreapp2.0\Dojodachi.runtimeconfig.dev.json
+C:\Users\S\Google Drive\CSharp\Dojodachi\bin\Debug\netcoreapp2.0\Dojodachi.dll
+C:\Users\S\Google Drive\CSharp\Dojodachi\bin\Debug\netcoreapp2.0\Dojodachi.pdb
+C:\Users\S\Google Drive\CSharp\Dojodachi\obj\Debug\netcoreapp2.0\Dojodachi.csproj.CoreCompileInputs.cache
+C:\Users\S\Google Drive\CSharp\Dojodachi\obj\Debug\netcoreapp2.0\Dojodachi.AssemblyInfoInputs.cache
+C:\Users\S\Google Drive\CSharp\Dojodachi\obj\Debug\netcoreapp2.0\Dojodachi.AssemblyInfo.cs
+C:\Users\S\Google Drive\CSharp\Dojodachi\obj\Debug\netcoreapp2.0\Dojodachi.dll
+C:\Users\S\Google Drive\CSharp\Dojodachi\obj\Debug\netcoreapp2.0\Dojodachi.pdb

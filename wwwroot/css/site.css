@@ -33,3 +33,35 @@
         display: none;
     }
 }
+
+h4{
+    display: inline-block;
+}
+
+.stats{
+    margin-top: 3%;
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+.dojodachi-container{
+    border: 2px solid black;
+    /* //display: inline-block; */
+    float: center;
+    padding: 3%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 3%;
+
+}
+
+.buttons{
+    float: center;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.buttons a{
+    box-shadow: 3px 3px black;
+    margin-right: 2%;
+}
