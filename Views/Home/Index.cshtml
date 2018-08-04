@@ -1,20 +1,24 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@using Dojodachi.Models
+@model DojodachiModel
 
 <div class="stats">
-    <h4>Fullness: XX</h4>
-    <h4>Happiness: XX</h4>
-    <h4>Meals: X</h4>
-    <h4>Energy: XX</h4>
+    <h4>Fullness: @Model.Fullness</h4>
+    <h4>Happiness: @Model.Happiness</h4>
+    <h4>Meals: @Model.Meals</h4>
+    <h4>Energy: @Model.Energy</h4>
 </div>
 <div class="dojodachi-container">
     <img src=~/images/creature.png>
-    <h3>Some type of message will go here</h3>
+            <h3>
+                @Context.Session.GetString("Message")
+            </h3>
 </div>
 <div class="buttons">
-    <a href="generate" class="btn btn-primary btn-lg" role="button">Feed</a>
-    <a href="generate" class="btn btn-primary btn-lg" role="button">Play</a>
-    <a href="generate" class="btn btn-primary btn-lg" role="button">Work</a>
-    <a href="generate" class="btn btn-primary btn-lg" role="button">Sleep</a>
+    <a href="feed" class="btn btn-primary btn-lg" role="button">Feed</a>
+    <a href="play" class="btn btn-primary btn-lg" role="button">Play</a>
+    <a href="work" class="btn btn-primary btn-lg" role="button">Work</a>
+    <a href="sleep" class="btn btn-primary btn-lg" role="button">Sleep</a>
 </div>
