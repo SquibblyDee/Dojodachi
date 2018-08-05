@@ -39,9 +39,16 @@ namespace Dojodachi.Controllers
             if(ourSessionPet.Meals > 0)
             {
                 Random random = new Random();
-                int howMuchFood = random.Next(5,11);
-                ourSessionPet.Fullness+=howMuchFood;
                 ourSessionPet.Meals-=1;
+                int howMuchFood = random.Next(5,11);
+                int Like = random.Next(4);
+                if(Like == 1)
+                {
+                    HttpContext.Session.SetString("Message", "Your Dojodachi didn't like that!");
+                    HttpContext.Session.SetObjectAsJson("OurPetString", ourSessionPet);
+                    return RedirectToAction("Index");
+                }
+                ourSessionPet.Fullness+=howMuchFood;
                 HttpContext.Session.SetString("Message", $"You fed your Dojodachi! Fullness +{howMuchFood}, Meals -1");
                 HttpContext.Session.SetObjectAsJson("OurPetString", ourSessionPet);
                 return RedirectToAction("Index");
@@ -53,24 +60,71 @@ namespace Dojodachi.Controllers
         [HttpGet("play")]
         public IActionResult Play()
         {
-            HttpContext.Session.SetString("Message", "You played with your Dojodachi");
+            DojodachiModel ourSessionPet = HttpContext.Session.GetObjectFromJson<DojodachiModel>("OurPetString");
+            if(ourSessionPet.Energy > 4)
+            {
+                ourSessionPet.Energy-=5;
+                Random random = new Random();
+                int HowHappy = random.Next(5, 11);
+                int Like = random.Next(4);
+                if(Like == 1)
+                {
+                    HttpContext.Session.SetString("Message", "Your Dojodachi didn't like that!");
+                    HttpContext.Session.SetObjectAsJson("OurPetString", ourSessionPet);
+                    return RedirectToAction("Index");
+                }
+                ourSessionPet.Happiness+=HowHappy;
+                HttpContext.Session.SetString("Message", $"You played with your Dojodachi! Happiness +{HowHappy}, Energy -5");
+                HttpContext.Session.SetObjectAsJson("OurPetString", ourSessionPet);
+                return RedirectToAction("Index");
 
+            }
+            HttpContext.Session.SetString("Message", "You need 5 energy to play with your Dojodachi");
+            HttpContext.Session.SetObjectAsJson("OurPetString", ourSessionPet);
             return RedirectToAction("Index");
         }
 
         [HttpGet("work")]
         public IActionResult Work()
         {
-            HttpContext.Session.SetString("Message", "You put your Dojodachi to work");
-
+            DojodachiModel ourSessionPet = HttpContext.Session.GetObjectFromJson<DojodachiModel>("OurPetString");
+            if(ourSessionPet.Energy > 4)
+            {
+                ourSessionPet.Energy-=5;
+                Random random = new Random();
+                int HowMany = random.Next(4);
+                ourSessionPet.Meals+=HowMany;
+                HttpContext.Session.SetString("Message", $"You put your Dojodachi to work! Meals {ourSessionPet.Meals}, Energy -5");
+                HttpContext.Session.SetObjectAsJson("OurPetString", ourSessionPet);
+                return RedirectToAction("Index");
+            }
+            HttpContext.Session.SetString("Message", "You need 5 energy to put your Dojodachi to work");
+            HttpContext.Session.SetObjectAsJson("OurPetString", ourSessionPet);
             return RedirectToAction("Index");
         }
 
         [HttpGet("sleep")]
         public IActionResult Sleep()
         {
-            HttpContext.Session.SetString("Message", "You Dojodachi went to sleep");
+            DojodachiModel ourSessionPet = HttpContext.Session.GetObjectFromJson<DojodachiModel>("OurPetString");
+            ourSessionPet.Energy+=15;
+            ourSessionPet.Fullness-=5;
+            ourSessionPet.Happiness-=5;
+            if(ourSessionPet.Happiness < 1 || ourSessionPet.Fullness < 1)
+            {
+                HttpContext.Session.SetString("Message", "You Dojodachi died in it's sleep!");
+                HttpContext.Session.SetObjectAsJson("OurPetString", ourSessionPet);
+                return RedirectToAction("Index");
+            }
+            HttpContext.Session.SetString("Message", "Your Dojodachi went to sleep");
+            HttpContext.Session.SetObjectAsJson("OurPetString", ourSessionPet);
+            return RedirectToAction("Index");
+        }
 
+        [HttpGet("clearsession")]
+        public IActionResult ClearSession()
+        {
+            HttpContext.Session.Clear();
             return RedirectToAction("Index");
         }
 

@@ -12,13 +12,33 @@
 </div>
 <div class="dojodachi-container">
     <img src=~/images/creature.png>
-            <h3>
-                @Context.Session.GetString("Message")
-            </h3>
+    @if(Enumerable.Range(1,99).Contains(Model.Energy) || Enumerable.Range(1,99).Contains(Model.Fullness) || Enumerable.Range(1,99).Contains(Model.Happiness))
+    {
+        <h3>@Context.Session.GetString("Message")</h3>
+    }
+    @if(Model.Energy > 99 && Model.Fullness > 99 && Model.Happiness > 99)
+    {
+        <h3>Congratulations! You Won!</h3>
+    }
+    @if(Model.Happiness < 1 || Model.Fullness < 1)
+    {
+        <h3>Your Dojodachi died in its sleep!</h3>
+    }
 </div>
 <div class="buttons">
-    <a href="feed" class="btn btn-primary btn-lg" role="button">Feed</a>
-    <a href="play" class="btn btn-primary btn-lg" role="button">Play</a>
-    <a href="work" class="btn btn-primary btn-lg" role="button">Work</a>
-    <a href="sleep" class="btn btn-primary btn-lg" role="button">Sleep</a>
+    @if(Enumerable.Range(1,99).Contains(Model.Energy) || Enumerable.Range(1,99).Contains(Model.Fullness) || Enumerable.Range(1,99).Contains(Model.Happiness) && Model.Fullness > 0 && Model.Happiness > 0)
+    {
+        <a href="feed" class="btn btn-primary btn-lg" role="button">Feed</a>
+        <a href="play" class="btn btn-primary btn-lg" role="button">Play</a>
+        <a href="work" class="btn btn-primary btn-lg" role="button">Work</a>
+        <a href="sleep" class="btn btn-primary btn-lg" role="button">Sleep</a>
+    }
+    @if(Model.Happiness < 1 || Model.Fullness < 1)
+    {
+        <a href="clearsession" class="btn btn-primary btn-lg" role="button">Restart?</a>
+    }
+    @if(Model.Energy > 99 && Model.Fullness > 99 && Model.Happiness > 99)
+    {
+        <a href="clearsession" class="btn btn-primary btn-lg" role="button">Restart?</a>
+    }
 </div>

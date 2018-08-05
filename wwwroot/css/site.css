@@ -49,11 +49,20 @@ h4{
     border: 2px solid black;
     /* //display: inline-block; */
     float: center;
-    padding: 3%;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 25%;
+    margin-right: 35%;
     margin-bottom: 3%;
+    padding: 3% 0%;
+    width: 55%;
 
+}
+
+.dojodachi-container img{
+    margin-left: 15%;
+}
+
+.dojodachi-container h3{
+    text-align: center;
 }
 
 .buttons{
